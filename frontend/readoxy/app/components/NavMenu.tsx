@@ -23,7 +23,7 @@ const NavMenu = () => {
                 { name: "More...", link: "/categories" },
             ],
         },
-        { label: "Blogs", options: [], link: "/blogs" },
+        { label: "Blogs", options: [], link: "/all/blogs" },
         { label: "Contact", options: [], link: "/contact" },
     ];
 
