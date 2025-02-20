@@ -6,10 +6,15 @@ import { usePathname } from "next/navigation";
 const Sidebar = () => {
     const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
     const [isQuizOpen, setIsQuizOpen] = useState(false);
+    const [isServiceNowOpen, setIsServiceNowOpen] = useState(false);
     const currentPath = usePathname();
 
     const toggleCategories = () => setIsCategoriesOpen(!isCategoriesOpen);
     const toggleQuiz = () => setIsQuizOpen(!isQuizOpen);
+    const toggleServiceNow = (event: React.MouseEvent) => {
+        event.stopPropagation();
+        setIsServiceNowOpen(!isServiceNowOpen);
+    };
     const isActive = (path: string) => currentPath === path ? 'text-blue-700' : 'text-gray-400';
 
     return (
@@ -26,12 +31,26 @@ const Sidebar = () => {
                     <span className="text-lg text-gray-400">Quiz</span>
                 </div>
                 <div className={`pl-4 transition-all duration-300 ease-in-out ${isQuizOpen ? 'max-h-fit opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-                    <Link href="/admin/quiz/servicenow">
-                        <div className={`flex items-center space-x-3 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 ${isActive('/admin/quiz/servicenow')}`}>
+                    <div className="flex flex-col">
+                        <div className="flex items-center space-x-3 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 hover:text-gray-600" onClick={toggleServiceNow}>
                             <i className="fas fa-angle-right text-gray-400"></i>
                             <span className="text-lg text-gray-400">ServiceNow</span>
                         </div>
-                    </Link>
+                        <div className={`pl-4 transition-all duration-300 ease-in-out ${isServiceNowOpen ? 'max-h-fit opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                            <Link href="/admin/quiz/servicenow">
+                                <div className={`flex items-center space-x-3 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 ${isActive('/admin/quiz/servicenow')}`}>
+                                    <i className="fas fa-angle-right text-gray-400"></i>
+                                    <span className="text-lg text-gray-400">View</span>
+                                </div>
+                            </Link>
+                            <Link href="/admin/quiz/servicenow/add">
+                                <div className={`flex items-center space-x-3 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 ${isActive('/admin/quiz/servicenow/add')}`}>
+                                    <i className="fas fa-plus text-gray-400"></i>
+                                    <span className="text-lg text-gray-400">Add</span>
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
                     <Link href="/admin/quiz/java">
                         <div className={`flex items-center space-x-3 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 ${isActive('/admin/quiz/java')}`}>
                             <i className="fas fa-angle-right text-gray-400"></i>
