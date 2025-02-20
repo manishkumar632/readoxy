@@ -1,17 +1,15 @@
-import Header from "@/app/components/Header";
-import Footer from "@/app/components/Footer";
+import Sidebar from "@/app/components/admin/Sidebar";
 export default function Layout({
     children,
   }: Readonly<{
     children: React.ReactNode;
   }>){
     return(
-        <div>
-            <Header />
-            <main>
+        <div className="flex">
+            <Sidebar />
+            <main className="flex-1">
                 {children}
             </main>
-            <Footer />
         </div>
     )
 }
