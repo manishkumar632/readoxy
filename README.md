@@ -14,3 +14,6 @@
 
 # Super admin Dashboard
 ![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot5.png)
+
+# Super admin Admin Management.
+![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot6.png)
