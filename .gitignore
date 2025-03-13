@@ -1,0 +1,13 @@
+# add .env
+.env
+.env copy
+# add .env.local
+.env.local
+# add .env.*.local
+.env.*.local
+# add node_modules
+node_modules/
+# add build output
+build/
+# add .DS_Store
+.DS_Store
