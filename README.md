@@ -211,6 +211,4 @@ When user signup to "Readoxy" for the first time, user will receive a welcome em
 - `EMAIL_SERVICE`: Email service configuration
 - `CLOUDINARY_*`: Cloudinary credentials
 
-## License
 
-MIT
