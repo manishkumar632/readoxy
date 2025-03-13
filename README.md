@@ -42,3 +42,6 @@ This is designed to let access the daily set quiz to only those user who are in 
 
 # Landing Page
 ![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Homepage.png)
+
+# User Sign Up page
+![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot13.png)
