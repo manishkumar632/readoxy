@@ -17,3 +17,6 @@
 
 # Super admin Admin Management.
 ![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot6.png)
+
+# Super admin Profile.
+![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot7.png)
