@@ -1,14 +1,21 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaChevronDown, FaSearch } from "react-icons/fa";
 import UserProfileIcon from "./home/UserProfileIcon";
 import LoginSignupButton from "./home/LoginSignupButton";
+import { useUserAuth } from "@/lib/context/UserAuthContext";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const NavMenu = () => {
-    const [openDropdown, setOpenDropdown] = useState<number | null>(null);
-    const [showOptions, setShowOptions] = useState(false);
-    const [userLoggedIn, setUserLoggedIn] = useState<boolean>(true);
+    const { isAuthenticated } = useUserAuth();
     const [selectedCategory, setSelectedCategory] = useState<string>("");
 
     const menuItems = [
@@ -27,42 +34,22 @@ const NavMenu = () => {
         { label: "Contact", options: [], link: "/contact" },
     ];
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (!(event.target as HTMLElement).closest(".dropdown-menu")) {
-                setShowOptions(false);
-                setOpenDropdown(null);
-            }
-        };
-        document.addEventListener("click", handleClickOutside);
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, []);
-
     return (
         <div className="flex gap-8">
+            
             <div className="items-center space-x-8 hidden md:flex">
                 {menuItems.map((menu, index) => (
-                    <div
-                        key={index}
-                        className="relative dropdown-menu"
-                        onMouseEnter={() => {
-                            setOpenDropdown(index);
-                            setShowOptions(true);
-                        }}
-                    >
+                    <div key={index} className="relative">
                         {menu.options.length > 0 ? (
-                            <>
-                                <button className="text-lg font-medium flex items-center gap-1">
+                            <DropdownMenu>
+                                <DropdownMenuTrigger className="text-lg font-medium flex items-center gap-1">
                                     {menu.label} <FaChevronDown />
-                                </button>
-                                {openDropdown === index && showOptions && (
-                                    <div className="absolute bg-white shadow-lg mt-2 rounded-lg w-40 flex flex-col z-[1]">
-                                        {menu.options.map((option, i) => (
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent className="absolute bg-white shadow-lg mt-2 rounded-lg w-40 flex flex-col z-[1] left-1/2 transform -translate-x-1/2">
+                                    {menu.options.map((option, i) => (
+                                        <DropdownMenuItem key={i}>
                                             <Link
-												href={option.link ?? "#"}
-                                                key={i}
+                                                href={option.link ?? "#"}
                                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left w-full"
                                                 onClick={() =>
                                                     setSelectedCategory(
@@ -72,10 +59,10 @@ const NavMenu = () => {
                                             >
                                                 {option.name}
                                             </Link>
-                                        ))}
-                                    </div>
-                                )}
-                            </>
+                                        </DropdownMenuItem>
+                                    ))}
+                                </DropdownMenuContent>
+                            </DropdownMenu>
                         ) : (
                             <Link
                                 href={menu.link ?? "#"}
@@ -86,12 +73,12 @@ const NavMenu = () => {
                         )}
                     </div>
                 ))}
-                <Link href={`#`} className="text-lg font-medium">
+                <Link href={`/pro`} className="text-lg font-medium">
                     Pro
                 </Link>
             </div>
             <div>
-                {userLoggedIn ? <UserProfileIcon /> : <LoginSignupButton />}
+                {isAuthenticated ? <UserProfileIcon /> : <LoginSignupButton />}
             </div>
         </div>
     );

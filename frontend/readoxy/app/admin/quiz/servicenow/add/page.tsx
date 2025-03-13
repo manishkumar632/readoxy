@@ -16,6 +16,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 // Define the form types
 type FormValues = {
     question: string;
+    tags: string;
     options: { value: string; isCorrect: boolean }[];
 };
 
@@ -23,6 +24,7 @@ const AdminPage: React.FC = () => {
     const form = useForm<FormValues>({
         defaultValues: {
             question: "",
+            tags: "",
             options: [{ value: "", isCorrect: false }],
         },
     });
@@ -35,6 +37,7 @@ const AdminPage: React.FC = () => {
     const onSubmit = async (data: FormValues) => {
         const newQuestion = {
             question: data.question,
+            tags: data.tags,
             options: data.options.map((option) => ({
                 value: option.value,
                 isCorrect: option.isCorrect,
@@ -87,6 +90,25 @@ const AdminPage: React.FC = () => {
                             </FormItem>
                         )}
                     />
+                    
+                    <FormField
+                        name="tags"
+                        control={form.control}
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Question Tags:</FormLabel>
+                                <FormControl>
+                                    <Input 
+                                        {...field} 
+                                        type="text" 
+                                        placeholder="Enter comma-separated tags (e.g., servicenow, java, python)" 
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    
                     {fields.map((field, index) => (
                         <div
                             key={field.id}
@@ -131,6 +153,7 @@ const AdminPage: React.FC = () => {
                             </Button>
                         </div>
                     ))}
+                    
                     <Button className="mr-4"
                         type="button"
                         onClick={() => append({ value: "", isCorrect: false })}

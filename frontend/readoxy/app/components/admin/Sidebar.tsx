@@ -2,12 +2,14 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/lib/context/AuthContext";
 
 const Sidebar = () => {
     const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
     const [isQuizOpen, setIsQuizOpen] = useState(false);
     const [isServiceNowOpen, setIsServiceNowOpen] = useState(false);
     const currentPath = usePathname();
+    const { logout, admin } = useAuth();
 
     const toggleCategories = () => setIsCategoriesOpen(!isCategoriesOpen);
     const toggleQuiz = () => setIsQuizOpen(!isQuizOpen);
@@ -19,12 +21,17 @@ const Sidebar = () => {
 
     return (
         <div className="flex flex-col p-4 space-y-6">
+            <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                <p className="text-lg font-semibold">Welcome, {admin?.username || 'Admin'}</p>
+            </div>
+            
             <Link href="/admin">
                 <div className={`flex items-center space-x-3 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 ${isActive('/admin')}`}>
                     <i className="fas fa-home"></i>
                     <span className="text-lg font-bold">Dashboard</span>
                 </div>
             </Link>
+            
             <div className="flex flex-col">
                 <div className="flex items-center space-x-3 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 hover:text-gray-600" onClick={toggleQuiz}>
                     <i className="fas fa-question-circle text-gray-400"></i>
@@ -65,6 +72,7 @@ const Sidebar = () => {
                     </Link>
                 </div>
             </div>
+            
             <div className="flex flex-col">
                 <div className="flex items-center space-x-3 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 hover:text-gray-600" onClick={toggleCategories}>
                     <i className="fas fa-list text-gray-400"></i>
@@ -79,30 +87,37 @@ const Sidebar = () => {
                     </Link>
                 </div>
             </div>
+            
             <Link href="/admin/courses">
                 <div className={`flex items-center space-x-3 transition duration-300 ease-in-out transform hover:scale-105 ${isActive('/admin/courses')}`}>
                     <i className="fas fa-book text-gray-400"></i>
                     <span className="text-lg text-gray-400">Courses</span>
                 </div>
             </Link>
+            
             <Link href="/admin/landing-page">
                 <div className={`flex items-center space-x-3 transition duration-300 ease-in-out transform hover:scale-105 ${isActive('/admin/landing-page')}`}>
                     <i className="fas fa-globe text-gray-400"></i>
                     <span className="text-lg text-gray-400">Landing Page</span>
                 </div>
             </Link>
-            <Link href={`${currentPath}/user/profile`}>
-                <div className={`flex items-center space-x-3 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 ${isActive(`${currentPath}/user/profile`)}`}>
-                    <i className="fas fa-user text-gray-400"></i>
-                    <span className="text-lg text-gray-400">Profile</span>
+            
+            <Link href="/admin/daily-quiz">
+                <div className={`flex items-center space-x-3 transition duration-300 ease-in-out transform hover:scale-105 ${isActive('/admin/daily-quiz')}`}>
+                    <i className="fas fa-calendar-day text-gray-400"></i>
+                    <span className="text-lg text-gray-400">Daily Quiz</span>
                 </div>
             </Link>
-            <Link href="/admin/sign-in">
-                <div className={`flex items-center space-x-3 transition duration-300 ease-in-out transform hover:scale-105 ${isActive('/admin/sign-in')}`}>
-                    <i className="fas fa-sign-in-alt text-gray-400"></i>
-                    <span className="text-lg text-gray-400">Sign In</span>
+            
+            <div className="mt-auto pt-6 border-t border-gray-200">
+                <div 
+                    className="flex items-center space-x-3 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 text-red-500"
+                    onClick={logout}
+                >
+                    <i className="fas fa-sign-out-alt"></i>
+                    <span className="text-lg">Logout</span>
                 </div>
-            </Link>
+            </div>
         </div>
     );
 };
