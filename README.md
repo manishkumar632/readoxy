@@ -36,4 +36,5 @@
 
 # Restricted Email
 This is designed to let access the daily set quiz to only those user who are in the restricted email list.
+<br />
 ![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot11.png)
