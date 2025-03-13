@@ -30,3 +30,6 @@
 
 # Quiz Management Page
 ![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot10.png)
+
+# Daily Quiz Management
+![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot11.png)
