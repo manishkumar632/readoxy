@@ -11,3 +11,6 @@
 
 # Super admin Password Reset page
 ![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot4.png)
+
+# Super admin Dashboard
+![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot5.png)
