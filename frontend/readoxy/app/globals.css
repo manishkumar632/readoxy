@@ -76,13 +76,23 @@ body {
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+  }
+  .prose {
+    @apply text-gray-700;
+  }
+  .prose h2 {
+    @apply text-2xl font-bold mt-8 mb-4;
+  }
+  .prose p {
+    @apply mb-4 leading-relaxed;
+  }
+  .prose blockquote {
+    @apply border-l-4 border-gray-200 pl-4 italic my-6;
   }
 }

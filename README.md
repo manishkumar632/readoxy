@@ -55,6 +55,7 @@ When user signup to "Readoxy" for the first time, user will receive a welcome em
 ![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot15.png)
 
 # Categories page
-
-<br /> <br />
 ![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/CategoriesPage.png)
+
+# Blog Reading Page
+![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/blogpage.png)
