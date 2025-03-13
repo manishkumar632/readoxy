@@ -27,3 +27,6 @@
 
 # Admin Dashboard
 ![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot9.png)
+
+# Quiz Management Page
+![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot10.png)
