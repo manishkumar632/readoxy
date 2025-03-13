@@ -48,3 +48,8 @@ This is designed to let access the daily set quiz to only those user who are in 
 
 # User Login page
 ![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot14.png)
+
+# Welcome Email
+When user signup to "Readoxy" for the first time, user will receive a welcome email from readoxy.
+<br /> <br />
+![Msocio](https://github.com/manishkumar632/readoxy/blob/main/images/Screenshot15.png)
